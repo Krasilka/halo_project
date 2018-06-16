@@ -1,0 +1,6 @@
+require 'httparty'
+require 'rest-client'
+require 'net/http'
+require 'json'
+require 'uri'
+require 'ffaker'
