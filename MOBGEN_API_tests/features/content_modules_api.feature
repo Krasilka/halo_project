@@ -30,3 +30,4 @@ Feature: API tests
     Given I send request to create module
     When I send request to create duplicated module
     Then I get 400 response code
+

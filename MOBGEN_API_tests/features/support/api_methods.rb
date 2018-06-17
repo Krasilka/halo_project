@@ -3,12 +3,13 @@ class APIMethods
 
   DATA = {
       'host' =>'https://halo-stage.mobgen.com',
-      'content' => 'https://halo-stage.mobgen.com/api/generalcontent/module/',
-      'auth' => 'https://halo-stage.mobgen.com/api/oauth/token?_admin=/'
+      'modules' => 'https://halo-stage.mobgen.com/api/generalcontent/module/',
+      'auth' => 'https://halo-stage.mobgen.com/api/oauth/token?_admin=/',
+      'content' => 'https://halo-stage.mobgen.com/api/generalcontent/'
   }
 
   def self.module_list_response(page, limit, token)
-    RestClient.get(DATA['content'],
+    RestClient.get(DATA['modules'],
                    {'Authorization' => "Bearer #{token}",
                     'Content-Type' => 'application/json'})
   end
@@ -20,7 +21,7 @@ class APIMethods
         isSingle: true
     }.to_json
 
-    RestClient.post(DATA['content'],
+    RestClient.post(DATA['modules'],
                     body,
                     {'Authorization' => "Bearer #{token}",
                      'Content-Type' => 'application/json'})
@@ -35,7 +36,7 @@ class APIMethods
   end
 
   def self.delete_module(module_id, token)
-    RestClient.delete(DATA['content'] + "#{module_id}",
+    RestClient.delete(DATA['modules'] + "#{module_id}",
                       {'Authorization' => "Bearer #{token}",
                        'Content-Type' => 'application/json'})
   end
